@@ -23,12 +23,27 @@ int main(){
         if(itr->second % 2 == 1){
             if(oddLetter != ' '){
                 cout << "NO SOLUTION\n";
-                break;
+                return 0;
             }else{
-                oddLetter = itr->second;
+                oddLetter = itr->first;
             }
         }
     }
 
+    
+    string left;
+    for(auto x: letters){
+        if(x.first != oddLetter){
+            left += string((x.second/2),x.first);
+        }
+    }
+    cout << left;
+    string a = string(letters[oddLetter],oddLetter);
+    cout << a;
+    for(int i = left.size()-1; i >= 0; i--){
+        cout << left[i];
+    }
+
+    cout << endl;
     return 0;
 }

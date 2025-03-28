@@ -38,7 +38,12 @@ int main(){
 
     for(int i = 1; i <= n; i++){
         for(int j = 1; j <= m; j++){
-            cout << ((maxRing < 10) ? "." : "..")  << ((answer[i][j] == 0) ? "." : to_string(answer[i][j]));
+            if(maxRing < 10){
+                cout << "." << ((answer[i][j] == 0) ? "." : to_string(answer[i][j]));
+            }else{
+                cout << (answer[i][j] >= 10 ? "." : "..");
+                cout << ((answer[i][j] == 0) ? "." : to_string(answer[i][j]));
+            }
         }
         cout << endl;
     }
