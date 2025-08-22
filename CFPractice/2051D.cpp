@@ -12,36 +12,21 @@ int main(){
         cin >> n >> x >> y;
         ll currentSum = 0;
         vector<ll> numbers;
-        map<ll,ll> numberDict;
         for(ll j = 0; j < n; j++){
             ll num;
             cin >> num;
             currentSum += num;
             numbers.push_back(num);
-            if(numberDict.find(num) == numberDict.end()){
-                numberDict[num] = 1;
-            }else{
-                numberDict[num] += 1;
-            }
         }
-        ll pairAmount = 0;
-        for(auto i = numberDict.begin(); i != numberDict.end(); i++){
-            for(auto j = i; j != numberDict.end(); j++){
-                if(i->first != j->first){
-                    ll target = currentSum - (i->first + j->first);
-                    if(target >= x && target <= y){
-                        pairAmount += (i->second*j->second);
-                    }
-                }else{
-                    if(i->second > 1){
-                        ll target = currentSum - (i->first + i->first);
-                        if(target >= x && target <= y){
-                            pairAmount += (i->second*(i->second-1))/2;
-                        }
-                    }
-                }
-            }
+        ll lowerBound = currentSum - y;
+        ll upperBound = currentSum - x;
+        ll left = 0;
+        ll right = numbers.size()-1;
+        sort(numbers.begin(),numbers.end());
+        ll pairs = 0;
+        while(right > left){
+            ll curSum = numbers[left] + numbers[right];
+            if()
         }
-        cout << pairAmount << endl;
     }
 }
